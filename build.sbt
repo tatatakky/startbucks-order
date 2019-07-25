@@ -8,7 +8,7 @@ lazy val akkalibraryDependencies = Seq(
 )
 lazy val akkadoc = (project in file("."))
   .settings(
-    name := "coffee-order-akka",
+    name := "starbucks-order-akka",
     defaultSetting,
     libraryDependencies ++= akkalibraryDependencies
   )

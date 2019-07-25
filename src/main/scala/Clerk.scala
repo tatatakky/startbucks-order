@@ -1,25 +1,24 @@
 import akka.actor.{Actor, Props}
 
-object StarBucks {
-  def props = Props(new StarBucks())
+object Clerk {
+  def props = Props(new Clerk())
 
   //later, must add the size of the coffee
   //kind of coffee
-  case class PeachOnTheBeachFrappuccino(quantity: Int)
-  case class DarkMochaChipFrappuccino(quantity: Int)
-  case class MatchaCreamFrappuccino(quantity: Int)
+  case class PeachOnTheBeachFrappuccino(price: Price)
+  case class DarkMochaChipFrappuccino(price: Price)
+  case class MatchaCreamFrappuccino(price: Price)
+  case class Price(p: Int)
 
 }
 
-class StarBucks extends Actor {
+class Clerk extends Actor {
 
-  import StarBucks.{DarkMochaChipFrappuccino, PeachOnTheBeachFrappuccino, MatchaCreamFrappuccino}
-
-
+  import Clerk.{DarkMochaChipFrappuccino, PeachOnTheBeachFrappuccino, MatchaCreamFrappuccino, Price}
+  
   def receive = {
-    case PeachOnTheBeachFrappuccino(q: Int) => sender() ! "You bought Peach On The Beach Frappuccino " + q
-    case DarkMochaChipFrappuccino(q: Int) => sender() ! "You bought Dark Mocha Chip Frappuccino " + q
-    case MatchaCreamFrappuccino(q: Int) => sender() ! "You bought Matcha Cream Frappuccino" + q
+    case PeachOnTheBeachFrappuccino(price: Price) => sender() ! s"You bought Peach On The Beach Frappuccino ${price.p} yen"
+    case DarkMochaChipFrappuccino(price: Price) => sender() ! s"You bought Dark Mocha Chip Frappuccino ${price.p} yen"
+    case MatchaCreamFrappuccino(price: Price) => sender() ! s"You bought Matcha Cream Frappuccino ${price.p} yen"
   }
-
 }
