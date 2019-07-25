@@ -1,4 +1,3 @@
-import Clerk.{DarkMochaChipFrappuccino, Price}
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
@@ -14,8 +13,10 @@ object Main {
 
   val clerkActor: ActorRef = system.actorOf(Clerk.props, "clerkActor")
 
+  import domain.{CrunchyAlmondChocolateFrappuccino, Size, Tall, Grande, Number, SumPrice}
+
   def main(args: Array[String]): Unit = {
-    (clerkActor ? DarkMochaChipFrappuccino(Price(500))).mapTo[String].onComplete {
+    (clerkActor ? CrunchyAlmondChocolateFrappuccino(Tall, Number(3))).mapTo[SumPrice].onComplete {
       case Success(value) =>
         println(value)
         system.terminate()
