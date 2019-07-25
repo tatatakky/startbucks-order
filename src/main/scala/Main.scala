@@ -7,13 +7,13 @@ import scala.util.{Failure, Success}
 
 object Main {
 
+  import domain.{CrunchyAlmondChocolateFrappuccino, Size, Tall, Grande, Number, SumPrice}
+
   val system = ActorSystem("actor-system")
   implicit val executionContext = system.dispatcher
   implicit val timeout = Timeout(3 seconds)
 
   val clerkActor: ActorRef = system.actorOf(Clerk.props, "clerkActor")
-
-  import domain.{CrunchyAlmondChocolateFrappuccino, Size, Tall, Grande, Number, SumPrice}
 
   def main(args: Array[String]): Unit = {
     (clerkActor ? CrunchyAlmondChocolateFrappuccino(Tall, Number(3))).mapTo[SumPrice].onComplete {

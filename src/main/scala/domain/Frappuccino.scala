@@ -3,7 +3,7 @@ package domain
 //kind of coffee
 case class PeachOnTheBeachFrappuccino(size: Size, number: Number) {
   def sumPrice = size match {
-    case Short  => SumPrice(0)
+    case Shoort  => SumPrice(0)
     case Tall   => SumPrice(620 * number.n)
     case Grande => SumPrice(0)
     case Venti  => SumPrice(0)
@@ -12,7 +12,7 @@ case class PeachOnTheBeachFrappuccino(size: Size, number: Number) {
 
 case class DarkMochaChipFrappuccino(size: Size, number: Number) {
   def sumPrice = size match {
-    case Short  => SumPrice(0)
+    case Shoort  => SumPrice(0)
     case Tall   => SumPrice(500 * number.n)
     case Grande => SumPrice(540 * number.n)
     case Venti  => SumPrice(580 + number.n)
@@ -20,7 +20,7 @@ case class DarkMochaChipFrappuccino(size: Size, number: Number) {
 }
 case class MatchaCreamFrappuccino(size: Size, number: Number) {
   def sumPrice = size match {
-    case Short  => SumPrice(0)
+    case Shoort  => SumPrice(0)
     case Tall   => SumPrice(490 * number.n)
     case Grande => SumPrice(530 * number.n)
     case Venti  => SumPrice(570 * number.n)
@@ -29,7 +29,7 @@ case class MatchaCreamFrappuccino(size: Size, number: Number) {
 
 case class CrunchyAlmondChocolateFrappuccino(size: Size, number: Number) {
   def sumPrice = size match {
-    case Short  => SumPrice(520 * number.n)
+    case Shoort  => SumPrice(520 * number.n)
     case Tall   => SumPrice(560 * number.n)
     case Grande => SumPrice(600 * number.n)
     case Venti  => SumPrice(640 * number.n)
@@ -39,7 +39,7 @@ case class CrunchyAlmondChocolateFrappuccino(size: Size, number: Number) {
 case class SumPrice(p: Int)
 
 sealed trait Size
-case object Short extends Size
+case object Shoort extends Size
 case object Tall extends Size
 case object Grande extends Size
 case object Venti extends Size
