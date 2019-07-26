@@ -1,22 +1,21 @@
 package domain
-//later, must add the size of the coffee
-//kind of coffee
+
 sealed trait Frappuccino {
   def sumPrice: Option[SumPrice]
 }
 
 case class PeachOnTheBeachFrappuccino(size: Size, number: Number) extends Frappuccino {
   def sumPrice: Option[SumPrice] = size match {
-    case Shoort => Option(null)
+    case Shoort => None
     case Tall   => Option(SumPrice(620 * number.n))
-    case Grande => Option(null)
-    case Venti  => Option(null)
+    case Grande => None
+    case Venti  => None
   }
 }
 
 case class DarkMochaChipFrappuccino(size: Size, number: Number) extends Frappuccino {
   def sumPrice: Option[SumPrice] = size match {
-    case Shoort => Option(null)
+    case Shoort => None
     case Tall   => Option(SumPrice(500 * number.n))
     case Grande => Option(SumPrice(540 * number.n))
     case Venti  => Option(SumPrice(580 * number.n))
@@ -25,7 +24,7 @@ case class DarkMochaChipFrappuccino(size: Size, number: Number) extends Frappucc
 
 case class MatchaCreamFrappuccino(size: Size, number: Number) extends Frappuccino {
   def sumPrice: Option[SumPrice] = size match {
-    case Shoort => Option(null)
+    case Shoort => None
     case Tall   => Option(SumPrice(490 * number.n))
     case Grande => Option(SumPrice(530 * number.n))
     case Venti  => Option(SumPrice(570 * number.n))
@@ -39,16 +38,4 @@ case class CrunchyAlmondChocolateFrappuccino(size: Size, number: Number) extends
     case Grande => Option(SumPrice(600 * number.n))
     case Venti  => Option(SumPrice(640 * number.n))
   }
-}
-
-case class SumPrice(p: Int)
-
-sealed trait Size
-case object Shoort extends Size
-case object Tall extends Size
-case object Grande extends Size
-case object Venti extends Size
-
-case class Number(n: Int) {
-  require(0 < n)
 }

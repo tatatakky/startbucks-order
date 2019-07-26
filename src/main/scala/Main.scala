@@ -21,6 +21,7 @@ object Main {
     Number,
     SumPrice
   }
+
   val system = ActorSystem("actor-system")
   implicit val executionContext = system.dispatcher
   implicit val timeout = Timeout(3 seconds)
@@ -113,7 +114,6 @@ object Main {
     DarkMochaChipFrappuccino(Venti, Number(2)),
     MatchaCreamFrappuccino(Tall, Number(4)),
     PeachOnTheBeachFrappuccino(Shoort, Number(2))
-
   )
 
   def main(args: Array[String]): Unit = {
