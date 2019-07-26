@@ -93,11 +93,6 @@ object Main {
     MatchaCreamFrappuccino(Venti, Number(6)),
     CrunchyAlmondChocolateFrappuccino(Tall, Number(3)),
     DarkMochaChipFrappuccino(Venti, Number(2)),
-    MatchaCreamFrappuccino(Tall, Number(4)),PeachOnTheBeachFrappuccino(Tall, Number(2)),
-    DarkMochaChipFrappuccino(Grande, Number(3)),
-    MatchaCreamFrappuccino(Venti, Number(6)),
-    CrunchyAlmondChocolateFrappuccino(Tall, Number(3)),
-    DarkMochaChipFrappuccino(Venti, Number(2)),
     MatchaCreamFrappuccino(Tall, Number(4)),
     PeachOnTheBeachFrappuccino(Tall, Number(2)),
     DarkMochaChipFrappuccino(Grande, Number(3)),
@@ -110,27 +105,26 @@ object Main {
     MatchaCreamFrappuccino(Venti, Number(6)),
     CrunchyAlmondChocolateFrappuccino(Tall, Number(3)),
     DarkMochaChipFrappuccino(Venti, Number(2)),
-    MatchaCreamFrappuccino(Tall, Number(4))
+    MatchaCreamFrappuccino(Tall, Number(4)),
+    PeachOnTheBeachFrappuccino(Tall, Number(2)),
+    DarkMochaChipFrappuccino(Grande, Number(3)),
+    MatchaCreamFrappuccino(Venti, Number(6)),
+    CrunchyAlmondChocolateFrappuccino(Tall, Number(3)),
+    DarkMochaChipFrappuccino(Venti, Number(2)),
+    MatchaCreamFrappuccino(Tall, Number(4)),
+    PeachOnTheBeachFrappuccino(Shoort, Number(2))
 
   )
 
   def main(args: Array[String]): Unit = {
     for (e <- data) {
-      (clerkActor ? e).mapTo[SumPrice].onComplete {
-        case Success(value) =>
-          println(value)
+      (clerkActor ? e).mapTo[Option[SumPrice]].onComplete {
+        case Success(optValue) =>
+          println(optValue)
         case Failure(e) =>
           println(e.getMessage)
       }
     }
-//    (clerkActor ? CrunchyAlmondChocolateFrappuccino(Tall, Number(30))).mapTo[SumPrice].onComplete {
-//      case Success(value) =>
-//        println(value)
-//        system.terminate()
-//      case Failure(e) =>
-//        println(e.getLocalizedMessage)
-//        system.terminate()
-//    }
   }
 
 }
