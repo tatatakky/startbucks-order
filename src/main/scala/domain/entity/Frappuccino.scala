@@ -1,4 +1,4 @@
-package domain
+package domain.entity
 
 sealed trait Frappuccino {
   def sumPrice: Option[SumPrice]

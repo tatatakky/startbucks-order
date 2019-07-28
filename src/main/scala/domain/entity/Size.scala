@@ -1,4 +1,4 @@
-package domain
+package domain.entity
 
 sealed trait Size
 case object Shoort extends Size

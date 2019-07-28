@@ -7,7 +7,7 @@ object Clerk {
 
 class Clerk extends Actor {
 
-  import domain.{
+  import domain.entity.{
     DarkMochaChipFrappuccino,
     PeachOnTheBeachFrappuccino,
     MatchaCreamFrappuccino,

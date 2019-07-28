@@ -7,7 +7,7 @@ import scala.util.{Failure, Success}
 
 object Main {
 
-  import domain.{
+  import domain.entity.{
     Frappuccino,
     PeachOnTheBeachFrappuccino,
     DarkMochaChipFrappuccino,
