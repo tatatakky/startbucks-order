@@ -19,16 +19,16 @@ class Clerk extends Actor {
   val log = Logging(context.system, this)
 
   def receive = {
-    case peach@PeachOnTheBeachFrappuccino(size: Size, number: Number) =>
+    case peach@PeachOnTheBeachFrappuccino(_: Size, _: Number) =>
       log.info("peach")
       sender() ! peach.sumPrice
-    case darkMocha@DarkMochaChipFrappuccino(size: Size, number: Number) =>
+    case darkMocha@DarkMochaChipFrappuccino(_: Size, _: Number) =>
       log.info("darkMocha")
       sender() ! darkMocha.sumPrice
-    case matcha@MatchaCreamFrappuccino(size: Size, number: Number) =>
+    case matcha@MatchaCreamFrappuccino(_: Size, _: Number) =>
       log.info("matcha")
       sender() ! matcha.sumPrice
-    case crunchyAlmond@CrunchyAlmondChocolateFrappuccino(size: Size, number: Number) =>
+    case crunchyAlmond@CrunchyAlmondChocolateFrappuccino(_: Size, _: Number) =>
       log.info("crunchyAlmond")
       sender() ! crunchyAlmond.sumPrice
   }

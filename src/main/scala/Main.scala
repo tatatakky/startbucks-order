@@ -119,12 +119,17 @@ object Main {
   def main(args: Array[String]): Unit = {
     for (e <- data) {
       (clerkActor ? e).mapTo[Option[SumPrice]].onComplete {
-        case Success(optValue) =>
-          println(optValue)
+        case Success(optValue) => optValue match {
+          case Some(value) => println(value)
+          case None => println("Nothing")
+        }
         case Failure(e) =>
           println(e.getMessage)
       }
     }
+
+    Thread.sleep(3000)
+    system.terminate()
   }
 
 }
