@@ -1,6 +1,6 @@
 package domain.entity
 
-sealed trait Frappuccino {
+trait Frappuccino {
   def sumPrice: Option[SumPrice]
 }
 
