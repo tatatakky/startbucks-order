@@ -13,9 +13,9 @@ object UserList {
 }
 
 
-sealed trait UserList[+A]
+sealed trait UserList[+_]
 case object UserNil extends UserList[Nothing]
-case class UserCons[+A](head: A, tail: UserList[A]) extends UserList[A]
+case class UserCons(head: User, tail: UserList[User]) extends UserList[User]
 
 object Main2 {
 
