@@ -1,6 +1,7 @@
 case class User(name: String, id: Int)
 object UserList {
 
+  //Userのみを許容するリスト
   sealed trait UserList[+_]
   case object UserNil extends UserList[Nothing]
   case class UserCons(head: User, tail: UserList[User]) extends UserList[User]
@@ -17,7 +18,6 @@ object UserList {
 
 sealed trait Error
 case object UserNotFound extends Error
-
 
 object Main2 {
 
